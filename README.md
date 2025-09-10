@@ -1,9 +1,3 @@
-
-📌 **Descrição curta para o repositório (GitHub):**  
-> Exercícios da disciplina LPA – Linguagem de Programação Aplicada em Java, focados em fundamentos da linguagem e lógica de programação.
-
----
-
 ## 🔹 README – **POO-JAVA**
 ```markdown
 # POO-JAVA ☕💡
