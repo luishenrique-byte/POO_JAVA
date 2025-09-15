@@ -19,6 +19,7 @@ public class Aluno {
         this.matricula = sc.nextLong();
         sc.nextLine(); // Limpar o buffer
         System.out.println("Informe o Nome do Aluno: ");
+        sc.nextLine(); //Não sei resolver o problema do buffer (PERGUNTAR A PROFESSORA)
         this.nome = sc.nextLine();
     }
 
@@ -54,7 +55,7 @@ public class Aluno {
             System.out.printf("FALTA: %.1f pontos%n", pontosFaltantes);
         } else {
             System.out.println("PARABÉNS, VOCÊ PASSOU");
-            System.out.printf("FALTA: %f pontos%n", pontosFaltantes);
+            System.out.println("FALTA: 0 pontos");
         }
 
     }
