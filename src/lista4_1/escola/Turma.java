@@ -23,6 +23,14 @@ public class Turma {
     private Aluno vetor[] = new Aluno[qtdeAlunos];
     private int aux = 0;
 
+    public Turma(){
+        System.out.println("Diciplina: ");
+        this.diciplina = sc.nextLine();
+        System.out.println("Professor: ");
+        this.professor = sc.nextLine();
+        System.out.println("Carga Horária: ");
+        this.cargaHoraria = sc.nextInt();
+    }
 
     public void mostrarMenu(){
 
