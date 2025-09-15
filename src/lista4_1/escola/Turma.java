@@ -139,29 +139,29 @@ public class Turma {
         }
     }
 
-    public int mostrarMenu(){
-        System.out.println("==========MENU=============");
-        System.out.println("1. Inserir aluno");
-        System.out.println("2. Registrar nota 1");
-        System.out.println("3. Registrar nota 2");
-        System.out.println("4. Registrar nota do trabalho");
-        System.out.println("5. Calcular média da turma");
-        System.out.println("6. Mostrar listagem da turma");
-        System.out.println("7. Sair");
-        System.out.println("===========================");
-        return sc.nextInt();
-    }
-    public void GarantirMenu(){ // Função garante que o usuario escolha um opção certa e RETORNA ELA
+    public void mostrarMenu(){
+
         int opcao, tentativa =0;
-        do {
-            if (tentativa>0){
-                System.out.println("Opção inválida");
-            }
 
-            opcao = mostrarMenu(); // Chama o menu e retorna a opção
+        do {  // do...while repetindo o menu
+            do { // do...while garantindo valor aceito
+                if (tentativa > 0) {
+                    System.out.println("Opção inválida");
+                }
+                System.out.println("==========MENU=============");
+                System.out.println("1. Inserir aluno");
+                System.out.println("2. Registrar nota 1");
+                System.out.println("3. Registrar nota 2");
+                System.out.println("4. Registrar nota do trabalho");
+                System.out.println("5. Calcular média da turma");
+                System.out.println("6. Mostrar listagem da turma");
+                System.out.println("7. Sair");
+                System.out.println("===========================");
+                opcao = sc.nextInt();
 
-        }while(opcao<0||opcao>7);
-       acao(opcao);
+            } while (opcao < 0 || opcao > 7);
+            acao(opcao);
+        }while (opcao!=7);
     }
     public void acao(int opcao){
 

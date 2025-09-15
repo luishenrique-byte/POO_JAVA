@@ -10,8 +10,7 @@ public class App {
     public static void main(String[] args) {
         Turma c = new Turma();
 
-        c.insereAluno();
-        c.registrarNotaP1();
+        c.mostrarMenu();
     }
 
 }
