@@ -186,8 +186,11 @@ public class Turma {
 
     public void mostrarLista(){
         System.out.println("++++++++++++++++++++++++++++++");
-        System.out.println("+++++++ +Lista Alunos+++++++++");
+        System.out.println("+++++++++Lista Alunos+++++++++");
         System.out.println("------------------------------");
+        System.out.println("Diciplina: " + this.diciplina);
+        System.out.println("Professor: "+ professor);
+        System.out.println("Carga Horária: " + cargaHoraria +" horas");
         for (int i = 0; i < qtdeAlunos; i++) {
             System.out.println("Matricula: " + vetor[i].getMatricula());
             System.out.println("Nome Aluno: " + vetor[i].getNome());
