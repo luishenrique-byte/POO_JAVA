@@ -1,6 +1,5 @@
 package lista4_1.escola;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 //A classe Turma deve conter os atributos disciplina, professor, carga horária,
@@ -20,14 +19,65 @@ import java.util.Scanner;
 public class Turma {
     Scanner sc = new Scanner(System.in);
     private String diciplina, professor;
-    private int cargaHoraria, qtdeAlunos = 30;
+    private int cargaHoraria, qtdeAlunos = 1;
     private Aluno vetor[] = new Aluno[qtdeAlunos];
     private int aux = 0;
 
 
+    public void mostrarMenu(){
 
+        int opcao, tentativa =0;
+
+        do {  // do...while repetindo o menu
+            do { // do...while garantindo receber valor aceito
+                if (tentativa > 0) {
+                    System.out.println("Opção inválida");
+                }
+                System.out.println("==========MENU=============");
+                System.out.println("1. Inserir aluno");
+                System.out.println("2. Registrar nota 1");
+                System.out.println("3. Registrar nota 2");
+                System.out.println("4. Registrar nota do trabalho");
+                System.out.println("5. Calcular média da turma");
+                System.out.println("6. Mostrar listagem da turma");
+                System.out.println("7. Sair");
+                System.out.println("===========================");
+                opcao = sc.nextInt();
+
+                tentativa++;
+
+            } while (opcao < 0 || opcao > 7);
+            tentativa =0; // reseta as tentativas, logo o if() so aparece quando é uma opção errada
+            acao(opcao);
+        }while (opcao!=7);
+    }
+    public void acao(int opcao){
+
+        switch(opcao){
+            case 1:
+                insereAluno();
+                break;
+            case 2:
+                registrarNotaP1();
+                break;
+            case 3:
+                registrarNotaP2();
+                break;
+            case 4:
+                registrarNotaT();
+                break;
+            case 5:
+                System.out.printf("Media da turma: %.2f%n",calcularMediaTurma());
+                break;
+            case 6:
+                mostrarLista();
+                break;
+            default:
+                break;
+        }
+    }
     public void insereAluno(){
-        if(aux<=qtdeAlunos) {
+        if(aux<qtdeAlunos) {
             Aluno objeto = new Aluno();
 
             this.vetor[aux] = objeto;
@@ -50,12 +100,12 @@ public class Turma {
                 System.out.println("Aluno Inexistente!");
             }
 
-            System.out.println("Informe o ID do Aluno: ");
+            System.out.println("Informe o ID do Aluno: "); // ID é igual a posição do aluno no vetor
             posicaoAluno = sc.nextInt();
 
             tentativa++;
 
-        }while(posicaoAluno > 30 || vetor[posicaoAluno]==null);
+        }while(posicaoAluno > qtdeAlunos || vetor[posicaoAluno-1]==null);
 
         System.out.println("Informe a nota da Primeira prova: ");
         double nota = sc.nextDouble();
@@ -77,12 +127,12 @@ public class Turma {
                 System.out.println("Aluno Inexistente!");
             }
 
-            System.out.println("Informe o ID do Aluno: ");
+            System.out.println("Informe o ID do Aluno: ");// ID é igual a posição do aluno no vetor
             posicaoAluno = sc.nextInt();
 
             tentativa++;
 
-        }while(posicaoAluno > 30 || vetor[posicaoAluno]==null);
+        }while(posicaoAluno > qtdeAlunos || vetor[posicaoAluno - 1]==null);
 
         System.out.println("Informe a nota da Segunda prova: ");
         double nota = sc.nextDouble();
@@ -101,7 +151,7 @@ public class Turma {
         do{
 
             if (tentativa>0){
-                System.out.println("Aluno Inexistente!");
+                System.out.println("Aluno Inexistente!");// ID é igual a posição do aluno no vetor
             }
 
             System.out.println("Informe o ID do Aluno: ");
@@ -109,12 +159,12 @@ public class Turma {
 
             tentativa++;
 
-        }while(posicaoAluno > 30 || vetor[posicaoAluno]==null);
+        }while(posicaoAluno > qtdeAlunos || vetor[posicaoAluno-1]==null);
 
-        System.out.println("Informe a nota da Segunda prova: ");
+        System.out.println("Informe a nota do Trabalho: ");
         double nota = sc.nextDouble();
 
-        vetor[posicaoAluno-1].setNotaP2(nota); // posicão - 1, pq o usuario nunca vai informar o aluno 0
+        vetor[posicaoAluno-1].setNotaT(nota); // posicão - 1, pq o usuario nunca vai informar o aluno 0
     }
 
     public double calcularMediaTurma(){
@@ -133,56 +183,11 @@ public class Turma {
         for (int i = 0; i < qtdeAlunos; i++) {
             System.out.println("Matricula: " + vetor[i].getMatricula());
             System.out.println("Nome Aluno: " + vetor[i].getNome());
-            System.out.println("Media : " + vetor[i].mediaAluno());
+            System.out.printf("Media : %.2f%n",vetor[i].mediaAluno());
             vetor[i].provaFinal(); // mostrando se o aluno vai para a prova final ou se passou de ano
             System.out.println("=============================");
         }
     }
 
-    public void mostrarMenu(){
 
-        int opcao, tentativa =0;
-
-        do {  // do...while repetindo o menu
-            do { // do...while garantindo valor aceito
-                if (tentativa > 0) {
-                    System.out.println("Opção inválida");
-                }
-                System.out.println("==========MENU=============");
-                System.out.println("1. Inserir aluno");
-                System.out.println("2. Registrar nota 1");
-                System.out.println("3. Registrar nota 2");
-                System.out.println("4. Registrar nota do trabalho");
-                System.out.println("5. Calcular média da turma");
-                System.out.println("6. Mostrar listagem da turma");
-                System.out.println("7. Sair");
-                System.out.println("===========================");
-                opcao = sc.nextInt();
-
-                tentativa++;
-
-            } while (opcao < 0 || opcao > 7);
-            acao(opcao);
-        }while (opcao!=7);
-    }
-    public void acao(int opcao){
-
-        switch(opcao){
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            default:
-                break;
-
-        }
-    }
 }
