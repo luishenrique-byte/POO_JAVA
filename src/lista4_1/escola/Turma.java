@@ -159,6 +159,8 @@ public class Turma {
                 System.out.println("===========================");
                 opcao = sc.nextInt();
 
+                tentativa++;
+
             } while (opcao < 0 || opcao > 7);
             acao(opcao);
         }while (opcao!=7);
