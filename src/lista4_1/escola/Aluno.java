@@ -19,7 +19,6 @@ public class Aluno {
         this.matricula = sc.nextLong();
         sc.nextLine(); // Limpar o buffer
         System.out.println("Informe o Nome do Aluno: ");
-        sc.nextLine(); //Não sei resolver o problema do buffer (PERGUNTAR A PROFESSORA)
         this.nome = sc.nextLine();
     }
 
