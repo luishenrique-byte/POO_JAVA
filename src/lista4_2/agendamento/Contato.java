@@ -16,66 +16,35 @@ import java.util.Scanner;
 //Organize as classes em pacotes
 public class Contato {
     Scanner sc = new Scanner(System.in);
-    private String name, email,numberPhone;
+    private String nome="m", email,numCell;
     private LocalDate dateBirthday;
 
 
-
-    public Contato() {
-        System.out.println("Informe o nome do contato: ");
-        this.name = sc.nextLine();
-
-        capturandoAniversario();
-
-        System.out.println("Informe o e-mail do contato: ");
-        this.email = sc.nextLine();
-
-        capturarNumero();
-
+    public String getNome() {
+        return nome;
     }
-    public void capturandoAniversario(){
-        boolean dateValid=false;
-        System.out.println("Informe o aniversário(dd/mm/aaaa) do contato: ");
-
-        while (!dateValid) {
-            String entrada = sc.nextLine();
-            DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-            try {
-                // tentando converter a String entrada no formato
-                this.dateBirthday = LocalDate.parse(entrada, formatador);
-                dateValid = true;
-            } catch (DateTimeParseException e) {
-                System.out.println("Formato inválido. Por favor, digite novamente.");
-            }
-            System.out.println("Data de aniversário inserida com sucesso!");
-            sc.close();
-        }
-    }
-    public void capturarNumero(){
-        boolean numValid = false;
-        System.out.println("Informe o número do contato: ");
-
-        while(!numValid){
-            // capturar o numero de entrada, troca todos char que não estão entre 0-9 por vazio;
-            String entrada = sc.nextLine().replaceAll("[^\\d]","");
-
-            // verificar se a string tem, rigorosamente, de 8 a 11 dígitos.
-            if(entrada.matches("\\d{8,11}")){
-                this.numberPhone = entrada;
-                numValid = true;
-            } else {
-                System.out.println("Número invalido. Por favor, digite apenas números");
-            }
-        }
-
-    }
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
     public void setEmail(String email) {
-
         this.email = email;
+    }
+
+    public String getNumCell() {
+        return numCell;
+    }
+    public void setNumCell(String numCell) {
+        this.numCell = numCell;
+    }
+
+    public LocalDate getDateBirthday() {
+        return dateBirthday;
+    }
+    public void setDateBirthday(LocalDate dateBirthday) {
+        this.dateBirthday = dateBirthday;
     }
 }
