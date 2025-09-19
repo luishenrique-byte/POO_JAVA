@@ -19,6 +19,5 @@ public class Agenda {
     public void addContato(){
         Contato object = new Contato();
         System.out.println("Informe o nome do contato: ");
-         =
     }
 }
