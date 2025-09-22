@@ -1,8 +1,6 @@
 package lista4_2.agendamento;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 //2) Faça um programa em Java que contém as classes Contato e Agenda.
@@ -16,7 +14,7 @@ import java.util.Scanner;
 //Organize as classes em pacotes
 public class Contato {
     Scanner sc = new Scanner(System.in);
-    private String nome="m", email,numCell;
+    private String nome, email,numCell;
     private LocalDate dateBirthday;
 
 

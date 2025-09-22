@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
-import java.util.Objects;
+import java.util.Comparator;
 import java.util.Scanner;
 
 //2) Faça um programa em Java que contém as classes Contato e Agenda.
@@ -50,20 +50,46 @@ public class Agenda {
     }
 
     public void acao(int opcao){
+        int cont=0;
+        if(opcao!=5) {
+            for (int i = 0; i < vetor.length; i++) { // antes de toda ação, verifica se há alguma coi no verto
+                if (vetor[i] != null) {
+                    cont++;
+                    break;
+                }
+            }
+        }
         switch (opcao){
             case 1:
                 inserirContato();
                 break;
             case 2:
-                consultarContato();
+
+                if (cont>0){
+                    consultarContato();
+                } else {
+                    System.out.println("Não há contatos registrados.");
+                }
                 break;
+
             case 3:
 
-                System.out.println("em breve");
+                if (cont>0){
+                    aniversarianteMes();
+                } else {
+                    System.out.println("Não há contatos registrados.");
+                }
                 break;
+
             case 4:
-                listarContatos();
+
+                if (cont>0){
+                    listarContatos();
+                } else {
+                    System.out.println("Não há contatos registrados.");
+                }
                 break;
+
             default:
                 break;
         }
@@ -96,7 +122,7 @@ public class Agenda {
     }
 
     public void consultarContato(){
-        Arrays.sort(vetor);
+        Arrays.sort(vetor, Comparator.comparing(Contato::getNome, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))); // ordenando vetor
         System.out.println("Informe nome do contato: ");
         String entrada = sc.nextLine();
         System.out.println("----------------------------------------------------");
@@ -110,8 +136,25 @@ public class Agenda {
         }
     }
 
+    public void aniversarianteMes() {
+        Arrays.sort(vetor, Comparator.comparing(Contato::getNome, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))); // ordenando vetor
+        int mesAtual = LocalDate.now().getMonthValue();
+        System.out.println("----------------------------------------------------");
+        for (int i = 0; i < vetor.length; i++) {
+
+            LocalDate aniversario = vetor[i].getDateBirthday();
+            int mesAniversario = aniversario.getMonthValue();
+
+            if (mesAtual == mesAniversario) {
+                System.out.println("| " + vetor[i].getNumCell() + "  -  " + vetor[i].getNome());
+                System.out.println("| " + vetor[i].getEmail());
+                System.out.println("| " + vetor[i].getDateBirthday());
+                System.out.println("----------------------------------------------------");
+            }
+        }
+    }
     public void listarContatos(){
-        Arrays.sort(vetor);
+        Arrays.sort(vetor, Comparator.comparing(Contato::getNome, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER))); // ordenando vetor
         System.out.println("----------------------------------------------------");
         for (int i = 0; i < vetor.length; i++) {
             if(!(vetor[i] == null)) {
