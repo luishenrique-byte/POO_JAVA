@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="predio-comercial:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/predio_comercial_jar</output-path>
+    <root id="archive" name="predio-comercial.jar">
+      <element id="module-output" name="predio-comercial" />
+    </root>
+  </artifact>
+</component>

@@ -14,12 +14,12 @@ import java.util.Scanner;
 //registrados. Devem ser implementados para a classe Agenda métodos para adicionar
 //contato, consultar contato, listar todos os contatos e listar aniversariantes do mês.
 //Uma vez implementadas as classes, implemente uma aplicação que apresente um menu
-//para o usuário para adicionar contatos, consultar contatos, listar os aniversariantes do mês
+//para o usuario para adicionar contatos, consultar contatos, listar os aniversariantes do mês
 //e listar todos os contatos.
 //Organize as classes em pacotes
 public class Agenda {
     Scanner sc = new Scanner(System.in);
-    private Contato vetor[] = new Contato[3];
+    private Contato vetor[] = new Contato[50];
     private int aux = 0;
 
 
